@@ -2,7 +2,7 @@ version: '2'
 services:
   web:
     build: .
-    command: npm run dev
+    command: yarn prod
     volumes:
       - .:/app/
       - /app/node_modules
