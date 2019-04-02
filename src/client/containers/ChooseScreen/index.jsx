@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import ChooseScreenComponent from './components/ChooseScreenComponent';
 import Table from 'containers/Table';
+import ChooseScreenComponent from './components/ChooseScreenComponent';
 
 export default class ChooseScreen extends Component {
 	state = {

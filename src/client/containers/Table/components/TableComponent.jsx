@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -32,6 +33,24 @@ const TableCells = [
 ];
 
 export default class TableComponent extends Component {
+	static propTypes = {
+		loading: PropTypes.bool,
+		data: PropTypes.arrayOf({
+			id: PropTypes.number,
+			firstName: PropTypes.string,
+			lastName: PropTypes.string,
+			email: PropTypes.string,
+			phone: PropTypes.string,
+		}),
+		currentPage: PropTypes.number,
+	};
+
+	static defaultProps = {
+		loading: false,
+		data: [],
+		currentPage: 1,
+	};
+
 	state = {
 		sortBy: {
 			name: 'Id',
@@ -39,7 +58,10 @@ export default class TableComponent extends Component {
 		},
 	};
 
-	translateCelName = name => {
+	/**
+	 * Translate name of cell from ui name to api name
+	 */
+	translateCellName = name => {
 		switch (name) {
 		case 'Id':
 			return 'id';
@@ -56,10 +78,13 @@ export default class TableComponent extends Component {
 		}
 	};
 
+	/**
+	 * Sort table data by the value from this.state.sortBy
+	 */
 	sortBy = (a, b) => {
 		const { sortBy: { name, asc } } = this.state;
 
-		const translatedName = this.translateCelName(name);
+		const translatedName = this.translateCellName(name);
 
 		if (asc) {
 			return a[translatedName] > b[translatedName] ? 1 : -1;
@@ -121,7 +146,7 @@ export default class TableComponent extends Component {
 									<Heading type="h1">{user.phone}</Heading>
 								</Col>
 							</div>
-					))}
+						))}
 				</Row>
 			</Fragment>
 		);

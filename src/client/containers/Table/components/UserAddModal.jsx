@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
 import Modal from 'react-modal';
 
@@ -19,6 +20,18 @@ const initialState = {
 };
 
 export default class SignModal extends Component {
+	static propTypes = {
+		isModalOpened: PropTypes.bool,
+		closeModal: PropTypes.func,
+		dataSize: PropTypes.oneOf(['small', 'large']),
+	};
+
+	static defaultProps = {
+		isModalOpened: false,
+		closeModal: () => console.log('close modal'),
+		dataSize: 'small',
+	};
+
 	state = initialState;
 
 	handleInput = e => this.setState({ [e.target.name]: e.target.value });
@@ -33,6 +46,9 @@ export default class SignModal extends Component {
 		}));
 	};
 
+	/**
+	 * Check if input was touched and still empty
+	 */
 	isError = name => {
 		const { touched } = this.state;
 

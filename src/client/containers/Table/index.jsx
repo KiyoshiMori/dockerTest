@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 
 import { getDataQuery } from 'lib/graphql/queries/Data';
@@ -13,6 +14,10 @@ import UserAddModal from './components/UserAddModal';
 import styles from './styles.styl';
 
 export default class Table extends Component {
+	static propTypes = {
+		dataSize: PropTypes.oneOf(['small', 'large']).isRequired,
+	};
+
 	state = {
 		currentPage: 1,
 		searchValue: '',
@@ -25,6 +30,9 @@ export default class Table extends Component {
 
 	handleToggleModal = () => this.setState(state => ({ isModalOpened: !state.isModalOpened }));
 
+	/**
+	 * Filter table data by the text from search field
+	 */
 	tableFilter = data => {
 		const { searchValue } = this.state;
 
