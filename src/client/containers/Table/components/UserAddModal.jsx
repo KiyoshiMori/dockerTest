@@ -32,7 +32,10 @@ export default class SignModal extends Component {
 		dataSize: 'small',
 	};
 
-	state = initialState;
+	state = {
+		...initialState,
+		newUserId: 1001,
+	};
 
 	handleInput = e => this.setState({ [e.target.name]: e.target.value });
 
@@ -70,7 +73,10 @@ export default class SignModal extends Component {
 			lastName,
 			email,
 			phone,
+			newUserId,
 		} = this.state;
+
+		console.log(this.state);
 
 		const disabled = !firstName || !lastName || !email || !phone;
 
@@ -128,13 +134,15 @@ export default class SignModal extends Component {
 								e.preventDefault();
 								await mutate({
 									variables: {
-										id: 1001,
+										id: newUserId,
 										firstName,
 										lastName,
 										phone,
 										email,
 									},
 								});
+
+								this.setState(state => ({ newUserId: state.newUserId + 1 }));
 								closeModal();
 								this.clearInputs();
 							}}
