@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import styles from './styles.styl';
 
@@ -14,6 +14,7 @@ export default class Row extends PureComponent {
 		secondary: PropTypes.bool,
 		text: PropTypes.bool,
 		loading: PropTypes.bool,
+		disabled: PropTypes.bool,
 	};
 
 	static defaultProps = {
@@ -23,21 +24,27 @@ export default class Row extends PureComponent {
 		secondary: false,
 		text: false,
 		loading: false,
+		disabled: false,
 	};
 
 	render() {
-		const { children, className, icon, size, secondary, text, loading, ...rest } = this.props;
+		const { children, className, icon, size, secondary, text, loading, disabled, ...rest } = this.props;
 		const classes = cx(
 			styles.button,
 			size && styles[`button${size}`],
 			secondary && styles.buttonSecondary,
 			text && styles.buttonText,
 			loading && styles.buttonLoading,
+			disabled && styles.buttonDisabled,
 			className,
 		);
 
 		return (
-			<button className={classes} {...rest}>
+			<button
+				className={classes}
+				disabled={disabled}
+				{...rest}
+			>
 				{children}
 				{icon && (
 					<div className={styles.icon}>

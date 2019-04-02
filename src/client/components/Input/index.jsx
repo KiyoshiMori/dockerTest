@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import Heading from 'components/Heading';
 
 import styles from './styles.styl';
@@ -44,6 +46,7 @@ export default class Row extends PureComponent {
 		const {
 			className,
 			label,
+			icon,
 			...rest
 		} = this.props;
 
@@ -54,10 +57,18 @@ export default class Row extends PureComponent {
 		return (
 			<div className={classes}>
 				{label && <Heading type="h2" color="gray">{label}</Heading>}
-				<Component
-					className={styles.input}
-					{...rest}
-				/>
+				<div className={styles.iconContainer}>
+					<Component
+						className={styles.input}
+						{...rest}
+					/>
+					{icon && (
+						<FontAwesomeIcon
+							icon={icon}
+							className={styles.icon}
+						/>
+					)}
+				</div>
 			</div>
 		);
 	}

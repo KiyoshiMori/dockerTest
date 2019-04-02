@@ -19,6 +19,7 @@ export default class Col extends PureComponent {
 		stretchHeight: PropTypes.bool,
 		children: PropTypes.node.isRequired,
 		className: PropTypes.string,
+		onClick: PropTypes.func,
 	};
 
 	static defaultProps = {
@@ -29,6 +30,7 @@ export default class Col extends PureComponent {
 		offsetSize: null,
 		stretchHeight: false,
 		className: null,
+		onClick: () => null,
 	};
 
 	render() {
@@ -41,6 +43,7 @@ export default class Col extends PureComponent {
 			stretchHeight,
 			children,
 			className,
+			onClick,
 		} = this.props;
 
 		const classes = cx(
@@ -54,6 +57,6 @@ export default class Col extends PureComponent {
 			className,
 		);
 
-		return <div className={classes}>{children}</div>;
+		return <div className={classes} onClick={onClick}>{children}</div>;
 	}
 }

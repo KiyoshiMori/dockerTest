@@ -50,5 +50,5 @@ export default ({ clientStats }) => (req, res) => {
 		res.status(200);
 		res.send(`<!doctype html>\n${renderToStaticMarkup(html)}`);
 		res.end();
-	}).catch(e => res.json({ error: e }));
+	});
 }
