@@ -1,0 +1,17 @@
+@import "../../../styles/_variables.styl"
+
+.row
+  max-width ($pageWidth + $colGap)
+  margin-left auto
+  margin-right auto
+  display flex
+  flex-wrap wrap
+  .row
+    width: auto
+    margin-left: (-1 * $colGap/2)
+    margin-right: (-1 * $colGap/2)
+    @media $mobile
+      margin-left: (-1 * $colGapMobile/2)
+      margin-right: (-1 * $colGapMobile/2)
+  &VerticalCenter
+    align-items: center

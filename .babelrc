@@ -1,0 +1,30 @@
+{
+  "env": {
+    "development": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "debug": true
+          }
+        ],
+      ]
+    },
+    "production": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "debug": false
+          }
+        ]
+      ]
+    }
+  },
+  "presets": ["@babel/preset-react"],
+  "plugins": [
+    "@babel/plugin-proposal-optional-chaining",
+    ["@babel/plugin-proposal-class-properties", { "loose": false }],
+    "react-hot-loader/babel"
+  ]
+}

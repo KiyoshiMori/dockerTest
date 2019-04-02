@@ -1,0 +1,61 @@
+@import '../../styles/_variables.styl';
+
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+
+.button
+  background transparent
+  border 1px solid rgba(0, 0, 0, 0.1)
+  outline none
+  color darkgrey
+  font-weight bold
+  display flex
+  align-items center
+  justify-content center
+  padding 0 5px
+  cursor pointer
+  transition all 0.7s ease
+  &Secondary
+    color white
+    background black
+    margin 5px 0 0
+    &:hover
+      background $black !important
+    &:disabled
+      background lightgray
+  &:hover
+    background black
+    color white
+  &Text
+    color black
+    border none
+    transition all 0.3s ease
+    &:hover
+      color darkgray !important
+      background transparent !important
+  &small
+    width 100px
+    padding 5px
+  &wide
+    width 100%
+    padding 10px
+  &Loading
+    cursor: default
+    &:after
+      content: ""
+      width: 15px
+      height: 15px
+      border: 2px solid #0000
+      border-top-color white
+      border-right-color white
+      border-radius 50%
+      margin auto
+      animation: spin 1s infinite linear
+      @media mobile
+        width: 25px
+        height: 25px
+.icon
+  padding 0 5px
+  font-size: 30px

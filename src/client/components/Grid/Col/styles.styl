@@ -1,0 +1,36 @@
+@import "../../../styles/_variables.styl"
+
+.col
+  box-sizing border-box
+  padding-right: ($colGap/2)
+  padding-left: ($colGap/2)
+  flex: 0 1 auto
+  @media $mobile
+    padding-right: ($colGapMobile/2)
+    padding-left: ($colGapMobile/2)
+  &Flex
+    display: flex
+
+for num in (1..12)
+  .col-{num}
+    width: (100 * num / 12)%
+    @media $mobile
+      width: 100%
+  .col-offset-{num}
+    margin-left: (100 * num / 12)%
+    @media $mobile
+      margin-left: 0
+
+for num in (1..12)
+  @media $desc
+    .col-l-{num}
+      width: (100 * num / 12)%
+  @media $tablet
+    .col-md-{num}
+      width: (100 * num / 12)%
+  @media $mobile
+    .col-sm-{num}
+      width: (100 * num / 12)%
+  @media $small
+    .col-xs-{num}
+      width: (100 * num / 12)%

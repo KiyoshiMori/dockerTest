@@ -1,0 +1,47 @@
+.modal
+  position absolute
+  width 200px
+  top 50%
+  left 50%
+  transform translate(-50%, -50%)
+  right auto
+  bottom auto
+  background-color white
+  border transparent
+  padding 25px
+  &Overlay
+    position fixed
+    top 0
+    left 0
+    right 0
+    bottom 0
+    background-color alpha(black, 0.7)
+  &Header
+    border-bottom #333940 1px solid
+    padding 10px 25px 2px
+  &Content
+    padding 20px 25px
+  &Label
+    max-height 200px
+    display flex
+  &Image
+    height 100%
+    display flex
+    margin 0 auto
+    &Container
+      position relative
+      overflow hidden
+      width 100%
+      border #333940 1px solid
+      cursor pointer
+    &Text
+      position absolute
+      top 40%
+      left 50%
+      transform translate(-50%, -50%)
+
+.buttons
+  margin-top 20px
+
+.displayNone
+  display none

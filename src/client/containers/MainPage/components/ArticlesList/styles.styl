@@ -1,0 +1,36 @@
+.container
+  padding 30px 20px
+  &Header
+    display flex
+    justify-content space-between
+    text-align end
+    margin-bottom 10px
+
+.article
+  cursor pointer
+  display flex
+  flex-direction column
+  margin-bottom 30px
+  &Image
+    width 100%
+    transition all 0.3s ease
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    &:hover
+      transform scale(1.2)
+  &ImageContainer
+    position relative
+    overflow hidden
+    border-radius 5px
+    border darkgray 1px solid
+    background alpha(lightgray,0.7)
+    height 200px
+    width 100%
+  &Description
+    display flex
+    align-items center
+    justify-content flex-end
