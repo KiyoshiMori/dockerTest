@@ -48,7 +48,7 @@ export default class SignModal extends Component {
 	clearInputs = () => this.setState(initialState);
 
 	render() {
-		const { isModalOpened, closeModal } = this.props;
+		const { isModalOpened, closeModal, dataSize } = this.props;
 		const {
 			firstName,
 			lastName,
@@ -73,7 +73,7 @@ export default class SignModal extends Component {
 						type="h2"
 						bold
 					>
-						Post an article
+						Add new user
 					</Heading>
 				</div>
 				<Mutation
@@ -82,7 +82,7 @@ export default class SignModal extends Component {
 						const data = cache.readQuery({
 							query: getDataQuery,
 							variables: {
-								type: 'large',
+								type: dataSize,
 							},
 						});
 
@@ -99,7 +99,7 @@ export default class SignModal extends Component {
 								],
 							},
 							variables: {
-								type: 'large',
+								type: dataSize,
 							},
 						});
 					}}

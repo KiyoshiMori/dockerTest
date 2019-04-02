@@ -32,13 +32,14 @@ export default class Table extends Component {
 	};
 
 	render() {
+		const { dataSize } = this.props;
 		const { currentPage, searchValue, isModalOpened } = this.state;
 
 		return (
 			<Query
 				query={getDataQuery}
 				variables={{
-					type: 'large',
+					type: dataSize,
 				}}
 				errorPolicy="all"
 			>
@@ -60,6 +61,7 @@ export default class Table extends Component {
 										<UserAddModal
 											isModalOpened={isModalOpened}
 											closeModal={this.handleToggleModal}
+											dataSize={dataSize}
 										/>
 										<SearchBar
 											value={searchValue}
