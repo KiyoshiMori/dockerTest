@@ -8,13 +8,14 @@
 .button
   background transparent
   border 1px solid rgba(0, 0, 0, 0.1)
+  margin 10px 0
   outline none
   color darkgrey
   font-weight bold
   display flex
   align-items center
   justify-content center
-  padding 0 5px
+  padding 10px 5px
   cursor pointer
   transition all 0.7s ease
   &Secondary
@@ -25,7 +26,7 @@
       background $black !important
     &:disabled
       background lightgray
-  &:hover
+  &:hover, &:active
     background black
     color white
   &Text
@@ -43,6 +44,8 @@
     padding 10px
   &Loading
     cursor: default
+    background black !important
+    color white !important
     &:after
       content: ""
       width: 15px

@@ -6,24 +6,28 @@ import { Row } from 'components/Grid';
 
 import styles from './styles.styl';
 
-export default ({ pages, currentPage, changePage }) => (
-	<Row className={styles.container}>
-		<div className={styles.pagination}>
-			<Button
-				size="wide"
-				onClick={() => changePage(currentPage - 1)}
-				disabled={currentPage === 1}
-			>
-				Previous
-			</Button>
-			<Heading type="h2">{currentPage} of {pages}</Heading>
-			<Button
-				size="wide"
-				onClick={() => changePage(currentPage + 1)}
-				disabled={currentPage === pages}
-			>
-				Next
-			</Button>
-		</div>
-	</Row>
-);
+export default ({ pages, currentPage, changePage, loading }) => {
+	if (loading) return null;
+
+	return (
+		<Row className={styles.container}>
+			<div className={styles.pagination}>
+				<Button
+					size="wide"
+					onClick={() => changePage(currentPage - 1)}
+					disabled={currentPage === 1}
+				>
+					Previous
+				</Button>
+				<Heading type="h2">{currentPage} of {pages}</Heading>
+				<Button
+					size="wide"
+					onClick={() => changePage(currentPage + 1)}
+					disabled={currentPage === pages}
+				>
+					Next
+				</Button>
+			</div>
+		</Row>
+	)
+};

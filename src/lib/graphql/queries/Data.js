@@ -18,3 +18,15 @@ export const getDataQuery = gql`
 		}
 	}
 `;
+
+export const addFieldMutation = gql`
+	mutation($id: Int, $firstName: String, $lastName: String, $email: String, $phone: String) {
+		addField(input: {id: $id, firstName: $firstName, lastName: $lastName, email: $email, phone: $phone}) {
+			id
+			firstName
+			lastName
+			email
+			phone
+		}
+	}
+`;

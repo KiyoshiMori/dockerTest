@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { Row, Col } from 'components/Grid';
 import Heading from 'components/Heading';
-import Pagination from './Pagination';
+import Loader from 'components/Loader';
 
 import styles from './styles.styl';
 
@@ -75,17 +75,11 @@ export default class TableComponent extends Component {
 		},
 	}));
 
-	tableFilter = data => {
-		const { searchText } = this.props;
-
-		return JSON.stringify(data).toLocaleLowerCase().includes(searchText);
-	};
-
 	render() {
-		const { data, currentPage } = this.props;
+		const { loading, data, currentPage } = this.props;
 		const { sortBy } = this.state;
 
-		console.log(currentPage);
+		if (loading) return <Loader />;
 
 		return (
 			<Fragment>
@@ -108,7 +102,6 @@ export default class TableComponent extends Component {
 						</Col>
 					))}
 					{data?.sort(this.sortBy)
-						.filter(this.tableFilter)
 						.slice(((currentPage - 1) * 50), (currentPage * 50))
 						.map(user => (
 							<div className={styles.tableRow}>

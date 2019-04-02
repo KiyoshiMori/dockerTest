@@ -6,4 +6,9 @@ export default {
 			return await getData(input);
 		},
 	},
+	Mutation: {
+		addField(_, { input }) {
+			return input;
+		},
+	},
 }

@@ -27,3 +27,25 @@
 .container
   display flex
   justify-content flex-end
+
+.modal
+  position absolute
+  width 200px
+  top 50%
+  left 50%
+  transform translate(-50%, -50%)
+  right auto
+  bottom auto
+  background-color white
+  border transparent
+  padding 25px
+  &Overlay
+    position fixed
+    top 0
+    left 0
+    right 0
+    bottom 0
+    background-color alpha(black, 0.7)
+  &Header
+    border-bottom #333940 1px solid
+    margin-bottom 5px

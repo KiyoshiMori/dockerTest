@@ -13,11 +13,15 @@ export default class Row extends PureComponent {
 		children: PropTypes.node.isRequired,
 		className: PropTypes.string,
 		textarea: PropTypes.bool,
+		icon: PropTypes.oneOf(['search']),
+		error: PropTypes.bool,
 	};
 
 	static defaultProps = {
 		className: null,
 		textarea: false,
+		icon: null,
+		error: false,
 	};
 
 	Component = props => {
@@ -47,19 +51,23 @@ export default class Row extends PureComponent {
 			className,
 			label,
 			icon,
+			error,
 			...rest
 		} = this.props;
 
 		const classes = cx(
+			styles.input,
+			icon && styles.inputWithIcon,
+			error && styles.inputError,
 			className,
 		);
 
 		return (
-			<div className={classes}>
+			<div>
 				{label && <Heading type="h2" color="gray">{label}</Heading>}
 				<div className={styles.iconContainer}>
 					<Component
-						className={styles.input}
+						className={classes}
 						{...rest}
 					/>
 					{icon && (

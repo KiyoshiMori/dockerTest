@@ -17,6 +17,21 @@ export default {
 				test: /\.css$/,
 				use: [MiniCSSExtractPlugin.loader, 'css-loader'],
 			},
+			{
+				test: /\.styl$/,
+				use: [
+					'style-loader',
+					{
+						loader: 'css-loader',
+						options: {
+							modules: true,
+							localIdentName: '[local]-[hash]',
+						},
+					},
+					'postcss-loader',
+					'stylus-loader',
+				],
+			},
 		],
 	},
 	name: 'client',

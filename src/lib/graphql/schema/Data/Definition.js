@@ -19,8 +19,20 @@ export default `
 	input getDataInput {
 		type: String
 	}
+	
+	input addFieldInput {
+		id: Int
+		firstName: String
+		lastName: String
+		email: String
+		phone: String
+	}
 
 	extend type Query {
 		getData(input: getDataInput): [DataResponse!]!
+	}
+	
+	extend type Mutation {
+		addField(input: addFieldInput): DataResponse
 	}
 `;

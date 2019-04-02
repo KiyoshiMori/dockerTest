@@ -26,6 +26,21 @@ export default {
 					},
 				],
 			},
+			{
+				test: /\.styl$/,
+				use: [
+					'isomorphic-style-loader',
+					{
+						loader: 'css-loader',
+						options: {
+							modules: true,
+							localIdentName: '[local]-[hash]',
+						},
+					},
+					'postcss-loader',
+					'stylus-loader',
+				],
+			},
 		],
 	},
 	externals: nodeExternals(),

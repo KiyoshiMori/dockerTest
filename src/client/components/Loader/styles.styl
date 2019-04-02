@@ -1,0 +1,28 @@
+.loading
+  min-height: 300px
+  display: flex
+  justify-content: center
+  align-items: center
+  &:after
+    content: ''
+    width: 45px
+    height: 45px
+    border: 2px solid #0000
+    border-top-color: #fc0
+    border-right-color: #fc0
+    border-radius: 50%
+    animation: spin 1s infinite linear
+  &Small
+    display: inline-flex
+    min-height: auto
+    height: 30px
+    width: 30px
+    &:after
+      width: 20px
+      height: 20px
+
+@keyframes spin
+  0%
+    transform: rotate(0)
+  100%
+    transform: rotate(360deg)
