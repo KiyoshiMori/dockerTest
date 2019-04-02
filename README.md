@@ -1,2 +1,2 @@
 - Clone this repo
-- yarn && yarn prod
+- yarn && yarn prod OR docker-compose up
